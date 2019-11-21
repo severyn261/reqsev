@@ -2,7 +2,7 @@
 # tasks file for Install_Nginx
 
 - name: Install Epel-release
-  yum: name=epel-release state=latest
+  shell: sudo amazon-linux install epel -y
 
 - name: Install Nginx and Pacemaker services
   yum:
