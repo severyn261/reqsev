@@ -1,0 +1,22 @@
+---
+# tasks file for Install_Nginx
+
+- name: Install Epel-release
+  yum: name=epel-release state=latest
+
+- name: Install Nginx and Pacemaker services
+  yum:
+    name:
+      - nginx 
+      - resource-agents
+    state: present
+  register: install
+
+# - name: Generate Nginx config file
+#   template: 
+#     src: /etc/ansible/roles/Install_Nginx/templates/nginx.j2 
+#     dest: /etc/nginx/nginx.conf 
+#     mode: 0555
+
+- name: Start Nginx services
+  service: name=nginx state=started enabled=yes

@@ -19,3 +19,10 @@
 
   roles:
    - elasticsearch
+
+- name: Install Nginx
+  hosts: nginx
+  become: yes
+
+  roles:
+   - nginx
