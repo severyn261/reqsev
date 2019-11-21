@@ -1,0 +1,15 @@
+[log]
+l1 ansible_host=10.222.10.52
+l2 ansible_host=10.222.11.236
+
+[kibana]
+k1 ansible_host=10.222.1.120
+
+[elastic]
+e1 ansible_host=10.222.10.206
+e2 ansible_host=10.222.10.245
+e3 ansible_host=10.222.10.71
+e4 ansible_host=10.222.11.103
+e5 ansible_host=10.222.11.211
+e6 ansible_host=10.222.11.110
+
