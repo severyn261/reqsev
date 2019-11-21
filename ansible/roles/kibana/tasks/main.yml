@@ -7,7 +7,7 @@
 - name: Add GPG key
   command: rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch
 
-- name: Copy Logstash.repo to VM
+- name: Copy Kibana.repo to VM
   template:
     src: /home/ec2-user/ansible/roles/kibana/templates/kibana.j2
     dest: /etc/yum.repos.d/kibana.repo

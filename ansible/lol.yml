@@ -1,10 +1,10 @@
 ---
-#- name: Install Kibana
-#  hosts: kibana
-#  become: yes
+- name: Install Kibana
+  hosts: kibana
+  become: yes
 
-#  roles:
-#   - kibana 
+  roles:
+   - kibana 
 
 - name: Install Logstash
   hosts: log
@@ -13,9 +13,9 @@
   roles:
    - logstash
 
-#- name: Install ElasticSearch
-#  hosts: elastic
-#  become: yes
+- name: Install ElasticSearch
+  hosts: elastic
+  become: yes
 
-#  roles:
-#   - elasticsearch
+  roles:
+   - elasticsearch
