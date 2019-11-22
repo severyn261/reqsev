@@ -1,0 +1,28 @@
+---
+- name: Install Java
+  yum:
+      name: java-1.8.0-openjdk
+      state: latest
+
+- name: Add GPG key
+  command: rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch
+
+- name: Copy filebeat.repo to VM
+  template:
+    src: /home/ec2-user/ansible/roles/filebeat/templates/repo.j2
+    dest: /etc/yum.repos.d/beats.repo
+  register: filebeat_repo
+
+- name: Install Filebeat
+  yum:
+      name: filebeat
+      state: latest
+
+- name: Create config file
+  template:
+    src: /home/ec2-user/ansible/roles/filebeat/templates/conf.j2
+    dest: /etc/filebeat/filebeat.yml
+  register: filebeat_yml
+
+- name: Start filebeat
+  service: name=filebeat state=started enabled=yes

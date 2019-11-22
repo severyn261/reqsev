@@ -20,9 +20,16 @@
   roles:
    - elasticsearch
 
-#- name: Install Nginx
-#  hosts: nginx
-#  become: yes
+- name: Install Nginx
+  hosts: nginx
+  become: yes
 
-#  roles:
-#   - nginx
+  roles:
+   - nginx
+
+- name: Install FileBeat
+  hosts: all
+  become: yes
+
+  roles:
+   - filebeat
