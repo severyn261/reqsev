@@ -7,7 +7,7 @@ worker_processes auto;
 error_log /var/log/nginx/error.log;
 pid /run/nginx.pid;
 
-# Load dynamic modules. See /usr/share/nginx/README.dynamic.
+# Load dynamic modules. See /usr/share/doc/nginx/README.dynamic.
 include /usr/share/nginx/modules/*.conf;
 
 events {
@@ -33,41 +33,16 @@ http {
     # Load modular configuration files from the /etc/nginx/conf.d directory.
     # See http://nginx.org/en/docs/ngx_core_module.html#include
     # for more information.
-
-#    include /etc/nginx/conf.d/load-balancer.conf;
-#    server {
-#        listen       3306;
-#        listen       [::]:3306;
-#        server_name  _;
-#        root         /usr/share/nginx/html;
-
-        # Load configuration files for the default server block.
-#        include /etc/nginx/conf.d/load-balancer.conf;
-	
-#        location / {
-#		proxy_pass http://myapp1;
-#        }
-#
-#        error_page 404 /404.html;
-#            location = /40x.html {
-#        }
-#
-#        error_page 500 502 503 504 /50x.html;
-#            location = /50x.html {
-#        }
-
-upstream myapp1 {
-	ip_hash;
-        server {{ hostvars[groups.tomcat[0]].ansible_host }}:8080;
-        server {{ hostvars[groups.tomcat[1]].ansible_host }}:8080;
-        server {{ hostvars[groups.tomcat[2]].ansible_host }}:8080;
-    }
+    include /etc/nginx/conf.d/*.conf;
 
     server {
-	listen 80;
+        listen 80;
+        server_name example.com;
 
         location / {
-            proxy_pass http://myapp1;
+            proxy_set_header   X-Forwarded-For $remote_addr;
+            proxy_set_header   Host $http_host;
+            proxy_pass         "http://{{ ansible_default_ipv4.address }}:5601";
         }
     }
 }
