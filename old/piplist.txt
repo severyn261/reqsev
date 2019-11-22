@@ -59,7 +59,7 @@ Pygments==2.1.1
 PyGObject==3.34.0
 pylibmc==1.6.1
 pylint==1.1.0
-pyOpenSSL==16.2.0
+pyOpenSSL==17.5.0
 pyserial==3.0.1
 python-magic==0.4.15
 python-memcached==1.57
