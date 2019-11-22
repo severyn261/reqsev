@@ -1,17 +1,18 @@
 [log]
-l1 ansible_host=10.222.22.17
-l2 ansible_host=10.222.23.104
+l1 ansible_host=10.222.22.78
+l2 ansible_host=10.222.23.159
 
 [kibana]
-k1 ansible_host=10.222.20.171
+k1 ansible_host=10.222.20.49
 
 [elastic]
-e1 ansible_host=10.222.22.253
-e2 ansible_host=10.222.22.73
-e3 ansible_host=10.222.22.153
-e4 ansible_host=10.222.23.79
-e5 ansible_host=10.222.23.160
-e6 ansible_host=10.222.23.4
+e1 ansible_host=10.222.22.91
+e2 ansible_host=10.222.22.142
+e3 ansible_host=10.222.22.238
+e4 ansible_host=10.222.23.69
+e5 ansible_host=10.222.23.108
+e6 ansible_host=10.222.23.7
 
 [nginx]
-n1 ansible_host=10.222.22.197
+n1 ansible_host=10.222.20.132
+n2 ansible_host=10.222.20.49
