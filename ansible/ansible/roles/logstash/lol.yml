@@ -1,0 +1,23 @@
+---
+- name: LoL check
+  hosts: all
+  become: yes
+
+  tasks:
+  - name: Update
+    yum:
+      name: '*'
+      state: latest
+  
+  - name: Install Java
+    yum:
+      name: java-1.8.0-openjdk
+      state: latest
+
+  - name: Add GPG key
+    command: rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch
+
+  - name: Install LogStash
+    yum:
+      name: logstash
+      state: latest

@@ -1,0 +1,28 @@
+---
+- name: Install Java
+  yum:
+      name: java-1.8.0-openjdk
+      state: latest
+
+- name: Add GPG key
+  command: rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch
+
+- name: Copy Kibana.repo to VM
+  template:
+    src: /home/ec2-user/ansible/roles/kibana/templates/kibana.j2
+    dest: /etc/yum.repos.d/kibana.repo
+  register: kibana_repo
+
+- name: Install Kibana
+  yum:
+      name: kibana
+      state: latest
+
+- name: Create config file
+  template:
+    src: /home/ec2-user/ansible/roles/kibana/templates/kibanaconf.j2
+    dest: /etc/kibana/kibana.yml
+  register: kibana_yml
+
+- name: Start Kibana
+  service: name=kibana state=started enabled=yes

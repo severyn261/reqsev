@@ -1,0 +1,28 @@
+---
+- name: Install Java
+  yum:
+      name: java-1.8.0-openjdk
+      state: latest
+
+- name: Add GPG key
+  command: rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch
+
+- name: Copy Elastic.repo to VM
+  template:
+    src: /home/ec2-user/ansible/roles/elasticsearch/templates/elastic.j2
+    dest: /etc/yum.repos.d/elasticsearch.repo
+  register: elastic_repo
+
+- name: Install ElasticSearch
+  yum:
+      name: elasticsearch
+      state: latest
+
+- name: Create config file
+  template:
+    src: /home/ec2-user/ansible/roles/elasticsearch/templates/config.j2
+    dest: /etc/elasticsearch/elasticsearch.yml
+  register: elastic_yml
+
+- name: Start ElasticSearch
+  service: name=elasticsearch state=started enabled=yes

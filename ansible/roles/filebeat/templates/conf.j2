@@ -142,9 +142,9 @@ setup.kibana:
 # Configure what output to use when sending the data collected by the beat.
 
 #-------------------------- Elasticsearch output ------------------------------
-output.elasticsearch:
+#output.elasticsearch:
   # Array of hosts to connect to.
-  hosts: ["{{hostvars[groups.elastic[0]].ansible_host}}:9200"]
+ # hosts: ["{{hostvars[groups.elastic[0]].ansible_host}}:9200"]
 
   # Enabled ilm (beta) to use index lifecycle management instead daily indices.
   #ilm.enabled: false

@@ -1,0 +1,45 @@
+---
+- name: Update
+  yum:
+      name: '*'
+      state: latest
+
+- name: Install Java
+  yum:
+      name: java-1.8.0-openjdk
+      state: latest
+
+- name: Add GPG key
+  command: rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch
+
+- name: Copy Logstash.repo to VM
+  template: 
+    src: /home/ec2-user/ansible/roles/logstash/templates/logstash.j2 
+    dest: /etc/yum.repos.d/logstash.repo
+  register: logstash_repo
+
+- name: Install LogStash
+  yum:
+      name: logstash
+      state: latest
+
+- name: Add user to the logstash group
+  command: sudo usermod -a -G logstash ec2-user
+
+- name: Copy input.conf to VM
+  template: 
+    src: /home/ec2-user/ansible/roles/logstash/templates/input.j2 
+    dest: /etc/logstash/conf.d/input.conf
+  register: input_file
+
+- name: Copy output.conf to VM
+  template: 
+    src: /home/ec2-user/ansible/roles/logstash/templates/output.j2 
+    dest: /etc/logstash/conf.d/output.conf
+  register: output_file
+
+- name: Copy filter.conf to VM
+  template: 
+    src: /home/ec2-user/ansible/roles/logstash/templates/filter.j2 
+    dest: /etc/logstash/conf.d/filter.conf
+  register: filter_file
