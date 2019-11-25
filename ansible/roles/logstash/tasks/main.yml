@@ -33,7 +33,7 @@
 - name: Copy input.conf to VM
   template: 
     src: /home/ec2-user/ansible/roles/logstash/templates/config.j2 
-    dest: /etc/logstash/logstash-sample.conf
+    dest: /etc/logstash/conf.d/full.conf
   register: input_file
 
 # - name: Copy output.conf to VM
