@@ -1,4 +1,8 @@
 ---
+- name: Change vm hostname
+  hostname: 
+    name: '{{inventory_hostname}}'
+    
 - name: Update
   yum:
       name: '*'
@@ -28,18 +32,21 @@
 
 - name: Copy input.conf to VM
   template: 
-    src: /home/ec2-user/ansible/roles/logstash/templates/input.j2 
-    dest: /etc/logstash/conf.d/input.conf
+    src: /home/ec2-user/ansible/roles/logstash/templates/config.j2 
+    dest: /etc/logstash/logstash-sample.conf
   register: input_file
 
-- name: Copy output.conf to VM
-  template: 
-    src: /home/ec2-user/ansible/roles/logstash/templates/output.j2 
-    dest: /etc/logstash/conf.d/output.conf
-  register: output_file
+# - name: Copy output.conf to VM
+#   template: 
+#     src: /home/ec2-user/ansible/roles/logstash/templates/output.j2 
+#     dest: /etc/logstash/conf.d/output.conf
+#   register: output_file
 
-- name: Copy filter.conf to VM
-  template: 
-    src: /home/ec2-user/ansible/roles/logstash/templates/filter.j2 
-    dest: /etc/logstash/conf.d/filter.conf
-  register: filter_file
+# - name: Copy filter.conf to VM
+#   template: 
+#     src: /home/ec2-user/ansible/roles/logstash/templates/filter.j2 
+#     dest: /etc/logstash/conf.d/filter.conf
+#   register: filter_file
+
+- name: Start Logstash
+  service: name=logstash state=started enabled=yes

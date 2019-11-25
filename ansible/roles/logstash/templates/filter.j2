@@ -1,12 +1,15 @@
 filter {
-if [type] == "syslog" {
+ if [type] == "nginx_access" {
     grok {
-      match => { "message" => "%{SYSLOGLINE}" }
+        match => { "message" => "%{IPORHOST:remote_ip} - %{DATA:user} \[%{HTTPDATE:access_time}\] \"%{WORD:http_method} %{DATA:url} HTTP/%{NUMBER:http_version}\" %{NUMBER:response_code} %{NUMBER:body_sent_bytes} \"%{DATA:referrer}\" \"%{DATA:agent}\"" }
     }
-
-    date {
-match => [ "timestamp", "MMM  d HH:mm:ss", "MMM dd HH:mm:ss" ]
-}
   }
-
+  date {
+        match => [ "timestamp" , "dd/MMM/YYYY:HH:mm:ss Z" ]
+  }
+  geoip {
+         source => "remote_ip"
+         target => "geoip"
+         add_tag => [ "nginx-geoip" ]
+  }
 }

@@ -1,4 +1,8 @@
 ---
+- name: Change vm hostname
+  hostname: 
+    name: '{{inventory_hostname}}'
+    
 - name: Install Java
   yum:
       name: java-1.8.0-openjdk

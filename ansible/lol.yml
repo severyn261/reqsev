@@ -1,10 +1,17 @@
 ---
-#- name: Install Kibana
-#  hosts: kibana
-#  become: yes
+- name: Install Nginx
+  hosts: kibana
+  become: yes
 
-#  roles:
-#   - kibana 
+  roles:
+   - nginx
+   
+- name: Install Kibana
+  hosts: kibana
+  become: yes
+
+  roles:
+    - kibana 
 
 - name: Install Logstash
   hosts: log
@@ -13,23 +20,16 @@
   roles:
    - logstash
 
-#- name: Install ElasticSearch
-#  hosts: elastic
-#  become: yes
-
-#  roles:
-#   - elasticsearch
-
-- name: Install Nginx
-  hosts: kibana
+- name: Install ElasticSearch
+  hosts: elastic
   become: yes
 
   roles:
-   - nginx
+    - elasticsearch
 
-#- name: Install FileBeat
-#  hosts: all
-#  become: yes
+- name: Install FileBeat
+  hosts: all
+  become: yes
 
-#  roles:
-#   - filebeat
+  roles:
+   - filebeat

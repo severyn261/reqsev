@@ -1,4 +1,7 @@
 ---
+- name: Change vm hostname
+  hostname: 
+    name: '{{inventory_hostname}}'
 # tasks file for Install_Nginx
 
 - name: Install Epel-release

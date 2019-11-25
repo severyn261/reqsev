@@ -1,9 +1,7 @@
 output {
- elasticsearch {
-  hosts    => "{{ hostvars[groups.elastic[0]].ansible_host }}:9200"
-    index => "%{[@metadata][beat]}-%{+YYYY.MM.dd}"
-       }
-stdout {
-    codec => rubydebug
-       }
+        elasticsearch {
+            hosts    => "{{ hostvars[groups.elastic[0]].ansible_host }}:9200"
+            index    => "nginx-%{+YYYY.MM.dd}"
+        }
+	#stdout { codec => rubydebug }
 }
