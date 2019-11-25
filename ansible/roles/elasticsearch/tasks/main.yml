@@ -28,14 +28,14 @@
     dest: /etc/elasticsearch/elasticsearch.yml
   register: elastic_yml
 
-- name: Install plugin
-  command: cd /usr/share/elasticsearch/bin; sudo ./elasticsearch-plugin install discovery-ec2 
+# - name: Install plugin
+#   command: cd /usr/share/elasticsearch/bin; sudo ./elasticsearch-plugin install discovery-ec2 
 
-- name: Create config file
-  template:
-    src: /home/ec2-user/ansible/roles/elasticsearch/templates/jvm.j2
-    dest: /etc/elasticsearch/jvm.options
-  register: jvm
+# - name: Create config file
+#   template:
+#     src: /home/ec2-user/ansible/roles/elasticsearch/templates/jvm.j2
+#     dest: /etc/elasticsearch/jvm.options
+#   register: jvm
 
 - name: Start ElasticSearch
   service: name=elasticsearch state=started enabled=yes

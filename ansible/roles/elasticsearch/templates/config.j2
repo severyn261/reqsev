@@ -21,9 +21,9 @@ cluster.name: svashc
 # Use a descriptive name for the node:
 #
 node.name: {{inventory_hostname}}
-node.master: false
-node.data: true
-node.ingest: true
+#node.master: false
+#node.data: true
+#node.ingest: true
 #
 # Add custom attributes to the node:
 #
@@ -55,7 +55,7 @@ path.logs: /var/log/elasticsearch
 #
 # Set the bind address to a specific IP (IPv4 or IPv6):
 #
-network.host: [{{ ansible_default_ipv4.address }}]
+network.host: {{ ansible_default_ipv4.address }}
 #
 # Set a custom port for HTTP:
 #
@@ -68,8 +68,8 @@ http.port: 9200
 # Pass an initial list of hosts to perform discovery when new node is started:
 # The default list of hosts is ["127.0.0.1", "[::1]"]
 #
-discovery.zen.hosts_provider: ec2
-discovery.zen.ping.unicast.hosts: ["{{ hostvars[groups.elastic[0]].ansible_host }}","{{ hostvars[groups.elastic[1]].ansible_host }}","{{ hostvars[groups.elastic[2]].ansible_host }}"] 
+#discovery.zen.hosts_provider: ec2
+#discovery.zen.ping.unicast.hosts: ["{{ hostvars[groups.elastic[0]].ansible_host }}","{{ hostvars[groups.elastic[1]].ansible_host }}","{{ hostvars[groups.elastic[2]].ansible_host }}"] 
 #discovery.zen.ping.unicast.hosts: ["host1", "host2"]
 #
 # Prevent the "split brain" by configuring the majority of nodes (total number of master-eligible nodes / 2 + 1):
