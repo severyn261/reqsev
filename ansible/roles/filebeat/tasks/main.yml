@@ -18,6 +18,7 @@
     src: /home/ec2-user/ansible/roles/filebeat/templates/conf.j2
     dest: /etc/filebeat/filebeat.yml
   register: filebeat_yml
+  when: "inventory_hostname in {{ z1 }}"
 
 - name: Start filebeat
   service: name=filebeat state=started enabled=yes

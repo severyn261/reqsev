@@ -1,18 +1,42 @@
-[log]
+[logz1]
 logstash-z1 ansible_host={{log1}}
+
+[logz2]
 logstash-z2 ansible_host={{log2}}
 
 [kibana]
 kibana ansible_host={{kibana}}
 
-[elastic]
+[elasticz1]
 elastic1-z1 ansible_host={{elastic1}}
 elastic2-z1 ansible_host={{elastic2}}
 elastic3-z1 ansible_host={{elastic3}}
+
+[elasticz2]
 elastic1-z2 ansible_host={{elastic4}}
 elastic2-z2 ansible_host={{elastic5}}
 elastic3-z2 ansible_host={{elastic6}}
 
 [nginx]
 Nginx ansible_host={{nginx1}}
-kibana ansible_host={{kibana}}
+
+[z1:children]
+logz1
+elasticz1
+nginx
+
+[z2:children]
+logz2
+elasticz2
+
+[elasticALL:children]
+elasticz1
+elasticz2
+
+[nginxALL:children]
+nginx
+kibana
+
+[logALL:children]
+logz1
+logz2

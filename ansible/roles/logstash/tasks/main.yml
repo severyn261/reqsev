@@ -30,6 +30,14 @@
     src: /home/ec2-user/ansible/roles/logstash/templates/config.j2 
     dest: /etc/logstash/conf.d/full.conf
   register: input_file
+  when: inventory_hostname == "{{groups.logz1[0]}}"
+
+- name: Copy input.conf to VM
+  template: 
+    src: /home/ec2-user/ansible/roles/logstash/templates/config2.j2 
+    dest: /etc/logstash/conf.d/full.conf
+  register: input_file
+  when: inventory_hostname == "{{groups.logz2[0]}}"
 
 # - name: Copy output.conf to VM
 #   template: 

@@ -14,7 +14,7 @@
    - filebeat
 
 - name: Install Nginx
-  hosts: nginx
+  hosts: nginxALL
   become: yes
 
   roles:
@@ -28,14 +28,14 @@
     - kibana 
 
 - name: Install Logstash
-  hosts: log
+  hosts: logALL
   become: yes
   
   roles:
    - logstash
 
 - name: Install ElasticSearch
-  hosts: elastic
+  hosts: elasticALL
   become: yes
 
   roles:
