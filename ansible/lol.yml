@@ -6,13 +6,20 @@
   roles:
    - java
 
+- name: Install FileBeat
+  hosts: all
+  become: yes
+
+  roles:
+   - filebeat
+
 - name: Install Nginx
-  hosts: kibana
+  hosts: nginx
   become: yes
 
   roles:
    - nginx
-   
+
 - name: Install Kibana
   hosts: kibana
   become: yes
@@ -34,9 +41,3 @@
   roles:
     - elasticsearch
 
-- name: Install FileBeat
-  hosts: all
-  become: yes
-
-  roles:
-   - filebeat
