@@ -1,4 +1,11 @@
 ---
+- name: Install Java
+  hosts: all
+  become: yes
+
+  roles:
+   - java
+
 - name: Install Nginx
   hosts: kibana
   become: yes
