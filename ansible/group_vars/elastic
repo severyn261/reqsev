@@ -1,7 +1,0 @@
----
-elastic1 : "{{ lookup('env','elasticonez1') }}"
-elastic2 : "{{ lookup('env','elastictwoz1') }}"
-elastic3 : "{{ lookup('env','elasticthz1') }}"
-elastic4 : "{{ lookup('env','elasticonez2') }}"
-elastic5 : "{{ lookup('env','elastictwoz2') }}"
-elastic6 : "{{ lookup('env','elasticthz2') }}"

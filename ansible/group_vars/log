@@ -1,3 +1,0 @@
----
-log1 : "{{ lookup('env','logstashone') }}"
-log2 : "{{ lookup('env','logstashtwo') }}"
