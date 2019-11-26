@@ -1,45 +1,45 @@
 ---
-# - name: Install Java
-#   hosts: all
-#   become: yes
+- name: Install Java
+  hosts: all
+  become: yes
 
-#   roles:
-#    - java
+  roles:
+   - java
 
-# - name: Install FileBeat at z1
-#   hosts: all
-#   become: yes
+- name: Install FileBeat at z1
+  hosts: all
+  become: yes
 
-#   roles:
-#    - filebeat
+  roles:
+   - filebeat
 
-# - name: Install FileBeat at z2
-#   hosts: all
-#   become: yes
+- name: Install FileBeat at z2
+  hosts: all
+  become: yes
 
-#   roles:
-#    - filebeatz2
+  roles:
+   - filebeatz2
 
-# - name: Install Nginx
-#   hosts: nginxALL
-#   become: yes
+- name: Install Nginx
+  hosts: nginxALL
+  become: yes
 
-#   roles:
-#    - nginx
+  roles:
+   - nginx
 
-# - name: Install Kibana
-#   hosts: kibana
-#   become: yes
+- name: Install Kibana
+  hosts: kibana
+  become: yes
 
-#   roles:
-#     - kibana 
+  roles:
+    - kibana 
 
-# - name: Install Logstash
-#   hosts: logALL
-#   become: yes
+- name: Install Logstash
+  hosts: logALL
+  become: yes
   
-#   roles:
-#    - logstash
+  roles:
+   - logstash
 
 - name: Install ElasticSearch
   hosts: elasticALL
