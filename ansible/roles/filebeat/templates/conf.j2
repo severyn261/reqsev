@@ -6,7 +6,7 @@ filebeat.inputs:
   scan_frequency: 5s
 
 output.logstash:
-  hosts: ["{{hostvars[groups.log[0]].ansible_host}}:5044",{{hostvars[groups.log[1]].ansible_host}}:5044]
+  hosts: ["{{hostvars[groups.log[0]].ansible_host}}:5044","{{hostvars[groups.log[1]].ansible_host}}:5044"]
 
 xpack.monitoring:
   enabled: true
