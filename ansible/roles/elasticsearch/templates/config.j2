@@ -69,7 +69,7 @@ http.port: 9200
 # The default list of hosts is ["127.0.0.1", "[::1]"]
 #
 #discovery.zen.hosts_provider: ec2
-#discovery.zen.ping.unicast.hosts: ["{{ hostvars[groups.elastic[0]].ansible_host }}","{{ hostvars[groups.elastic[1]].ansible_host }}","{{ hostvars[groups.elastic[2]].ansible_host }}"] 
+#discovery.zen.ping.unicast.hosts: ["{{ hostvars[groups.elasticz1[0]].ansible_host }}","{{ hostvars[groups.elasticz1[1]].ansible_host }}","{{ hostvars[groups.elasticz1[2]].ansible_host }}"] 
 #discovery.zen.ping.unicast.hosts: ["host1", "host2"]
 #
 # Prevent the "split brain" by configuring the majority of nodes (total number of master-eligible nodes / 2 + 1):
