@@ -6,12 +6,19 @@
   roles:
    - java
 
-- name: Install FileBeat
+- name: Install FileBeat at z1
   hosts: all
   become: yes
 
   roles:
    - filebeat
+
+- name: Install FileBeat at z2
+  hosts: all
+  become: yes
+
+  roles:
+   - filebeatz2
 
 - name: Install Nginx
   hosts: nginxALL

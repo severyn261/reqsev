@@ -1,0 +1,6 @@
+---
+# handlers file for Install_Nginx
+
+
+- name: Start Pacemaker services
+  service: name=pcsd state=started enabled=yes
