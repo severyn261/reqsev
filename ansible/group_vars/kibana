@@ -1,0 +1,2 @@
+---
+kibana : {{ lookup('env','kibana') }}

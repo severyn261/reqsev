@@ -1,18 +1,18 @@
 [log]
-logstash-z1 ansible_host=10.222.22.177
-logstash-z2 ansible_host=10.222.23.54
+logstash-z1 ansible_host={{log1}}
+logstash-z2 ansible_host={{log2}}
 
 [kibana]
-kibana ansible_host=10.222.20.108
+kibana ansible_host={{kibana}}
 
 [elastic]
-elastic1-z1 ansible_host=10.222.22.81
-elastic2-z1 ansible_host=10.222.22.203
-elastic3-z1 ansible_host=10.222.22.217
-elastic1-z2 ansible_host=10.222.23.52
-elastic2-z2 ansible_host=10.222.23.73
-elastic3-z2 ansible_host=10.222.23.180
+elastic1-z1 ansible_host={{elastic1}}
+elastic2-z1 ansible_host={{elastic2}}
+elastic3-z1 ansible_host={{elastic3}}
+elastic1-z2 ansible_host={{elastic4}}
+elastic2-z2 ansible_host={{elastic5}}
+elastic3-z2 ansible_host={{elastic6}}
 
 [nginx]
-Nginx1 ansible_host=10.222.20.12
-n2 ansible_host=10.222.20.108
+Nginx1 ansible_host={{nginx1}}
+kibana ansible_host={{kibana}}

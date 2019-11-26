@@ -1,0 +1,3 @@
+---
+nginx1 : {{ lookup('env','NGINX') }}
+kibana : {{ lookup('env','kibana') }}
