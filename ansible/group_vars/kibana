@@ -1,2 +1,2 @@
 ---
-kibana : {{ lookup('env','kibana') }}
+kibana : "{{ lookup('env','kibana') }}"
