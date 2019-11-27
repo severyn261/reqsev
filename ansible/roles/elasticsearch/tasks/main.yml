@@ -17,20 +17,28 @@
       name: elasticsearch
       state: latest
 
-- name: Create config file
-  template:
-    src: /home/ec2-user/ansible/roles/elasticsearch/templates/config.j2
-    dest: /etc/elasticsearch/elasticsearch.yml
-  register: elastic_yml
-
 - name: Install plugin
   command: "echo y | sudo /usr/share/elasticsearch/bin/elasticsearch-plugin install discovery-ec2 -s"
 
-# - name: Create config file
-#   template:
-#     src: /home/ec2-user/ansible/roles/elasticsearch/templates/jvm.j2
-#     dest: /etc/elasticsearch/jvm.options
-#   register: jvm
+- name: Create Master config file
+  template:
+    src: /home/ec2-user/ansible/roles/elasticsearch/templates/configMaster.j2
+    dest: /etc/elasticsearch/elasticsearch.yml
+  register: elastic_yml
+  when: inventory_hostname == "{{groups.elasticz1[0]}}"
+
+- name: Create Slave config file
+  template:
+    src: /home/ec2-user/ansible/roles/elasticsearch/templates/configSlave.j2
+    dest: /etc/elasticsearch/elasticsearch.yml
+  register: elastic_yml
+  when: inventory_hostname != "{{groups.elasticz1[0]}}"
+
+- name: Create config file
+  template:
+    src: /home/ec2-user/ansible/roles/elasticsearch/templates/jvm.j2
+    dest: /etc/elasticsearch/jvm.options
+  register: jvm
 
 - name: Start ElasticSearch
   service: name=elasticsearch state=started enabled=yes
