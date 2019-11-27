@@ -7,18 +7,18 @@
    - java
 
 - name: Install FileBeat at z1
-  hosts: all
+  hosts: nginx
   become: yes
 
   roles:
    - filebeat
 
-- name: Install FileBeat at z2
-  hosts: all
-  become: yes
+# - name: Install FileBeat at z2
+#   hosts: nginx
+#   become: yes
 
-  roles:
-   - filebeatz2
+#   roles:
+#    - filebeatz2
 
 - name: Install Nginx
   hosts: nginxALL
