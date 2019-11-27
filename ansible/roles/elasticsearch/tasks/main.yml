@@ -23,8 +23,8 @@
     dest: /etc/elasticsearch/elasticsearch.yml
   register: elastic_yml
 
-# - name: Install plugin
-#   command: /usr/share/elasticsearch/bin/elasticsearch-plugin install discovery-ec2
+- name: Install plugin
+  command: "echo y | sudo /usr/share/elasticsearch/bin/elasticsearch-plugin install discovery-ec2 -s"
 
 # - name: Create config file
 #   template:
@@ -32,5 +32,5 @@
 #     dest: /etc/elasticsearch/jvm.options
 #   register: jvm
 
-# - name: Start ElasticSearch
-#   service: name=elasticsearch state=started enabled=yes
+- name: Start ElasticSearch
+  service: name=elasticsearch state=started enabled=yes
