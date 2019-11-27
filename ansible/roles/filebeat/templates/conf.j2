@@ -11,4 +11,4 @@ output.logstash:
 xpack.monitoring:
   enabled: true
   elasticsearch:
-    hosts: ["{{hostvars[groups.elasticz1[0]].ansible_host}}:5044","{{hostvars[groups.elasticz1[1]].ansible_host}}:5044","{{hostvars[groups.elasticz1[2]].ansible_host}}:5044"]
+    hosts: ["{{hostvars[groups.elasticz1[0]].ansible_host}}:9200","{{hostvars[groups.elasticz1[1]].ansible_host}}:9200","{{hostvars[groups.elasticz1[2]].ansible_host}}:9200"]
