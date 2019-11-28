@@ -49,5 +49,8 @@
     mode: 0660
   register: jvm
 
+- name: reload systemd config
+  systemd: daemon_reload=yes
+
 - name: Start ElasticSearch
   service: name=elasticsearch state=started enabled=yes
