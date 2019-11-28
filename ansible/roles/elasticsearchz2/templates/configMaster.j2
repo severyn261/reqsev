@@ -1,0 +1,14 @@
+cluster.name: sevko
+
+node.name: {{inventory_hostname}}
+node.master: true
+node.data: true
+node.ingest: true
+
+path.data: /var/lib/elasticsearch
+path.logs: /var/log/elasticsearch
+
+network.host: {{ ansible_default_ipv4.address }}
+
+discovery.zen.hosts_provider: ec2
+discovery.zen.ping.unicast.hosts: ["{{ hostvars[groups.elasticz2[0]].ansible_host }}", "{{ hostvars[groups.elasticz2[1]].ansible_host }}", "{{ hostvars[groups.elasticz2[2]].ansible_host }}"]

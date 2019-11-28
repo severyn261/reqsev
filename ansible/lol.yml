@@ -41,10 +41,17 @@
   roles:
    - logstash
 
-- name: Install ElasticSearch
-  hosts: elasticALL
+- name: Install ElasticSearch at Z1
+  hosts: elasticz1
   become: yes
 
   roles:
     - elasticsearch
+
+- name: Install ElasticSearch at Z2
+  hosts: elasticz2
+  become: yes
+
+  roles:
+    - elasticsearchz2
 
