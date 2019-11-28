@@ -25,7 +25,7 @@
     group: elasticsearch
     mode: 0660
   register: elastic_yml
-  when: inventory_hostname == "{{groups.elasticz1[0]}}"
+  when: inventory_hostname == "{{groups.elasticz2[0]}}"
 
 - name: Create Slave config file
   template:
@@ -35,7 +35,7 @@
     group: elasticsearch
     mode: 0660
   register: elastic_yml
-  when: inventory_hostname != "{{groups.elasticz1[0]}}"
+  when: inventory_hostname != "{{groups.elasticz2[0]}}"
 
 - name: Create config file
   template:
