@@ -44,6 +44,9 @@
   template:
     src: /home/ec2-user/ansible/roles/elasticsearch/templates/jvm.j2
     dest: /etc/elasticsearch/jvm.options
+    owner: elasticsearch
+    group: elasticsearch
+    mode: 0660
   register: jvm
 
 - name: Start ElasticSearch
