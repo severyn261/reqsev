@@ -24,7 +24,7 @@
   template:
     src: /home/ec2-user/ansible/roles/elasticsearch/templates/configMaster.j2
     dest: /etc/elasticsearch/elasticsearch.yml
-    owner: root
+    owner: elasticsearch
     group: elasticsearch
     mode: 0660
   register: elastic_yml
@@ -34,7 +34,7 @@
   template:
     src: /home/ec2-user/ansible/roles/elasticsearch/templates/configSlave.j2
     dest: /etc/elasticsearch/elasticsearch.yml
-    owner: root
+    owner: elasticsearch
     group: elasticsearch
     mode: 0660
   register: elastic_yml
