@@ -47,7 +47,7 @@
   register: jvm
 
 - name: Install plugin
-  command: "echo y | sudo /usr/share/elasticsearch/bin/elasticsearch-plugin install discovery-ec2 -s"
+  shell: "echo y | sudo /usr/share/elasticsearch/bin/elasticsearch-plugin install discovery-ec2 -s"
 
 - name: reload systemd config
   systemd: daemon_reload=yes

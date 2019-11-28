@@ -10,7 +10,7 @@ input {
 output {
   elasticsearch {
     hosts => ["{{ hostvars[groups.elasticz1[0]].ansible_host }}:9200","{{ hostvars[groups.elasticz1[1]].ansible_host }}:9200","{{ hostvars[groups.elasticz1[2]].ansible_host }}:9200"]
-    index => "%{[@metadata][beat]}-%{[@metadata][version]}-%{+YYYY.MM.dd}"
+    index => "%{[@metadata][beat]}-%{[@metadata][beat.hostname]}-%{+YYYY.MM.dd}"
     #user => "elastic"
     #password => "changeme"
   }
