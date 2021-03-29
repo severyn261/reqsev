@@ -55,7 +55,7 @@ piston-mini-client==0.7.5
 plotly==4.1.1
 pycairo==1.18.1
 pycrypto==2.6.1
-Pygments==2.1.1
+Pygments==2.7.4
 PyGObject==3.34.0
 pylibmc==1.6.1
 pylint==1.1.0
